@@ -1,6 +1,6 @@
 import { CountryInfoResponseDto } from '../dtos/country-info-response.dto';
 
-export const apiCountryDtoArrayExample: CountryInfoResponseDto = {
+export const countryInfoResponseDtoExample: CountryInfoResponseDto = {
   borderingCountries: [
     {
       commonName: 'Hungary',

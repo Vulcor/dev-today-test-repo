@@ -1,16 +1,17 @@
 import { Controller, Get, Logger, Param } from '@nestjs/common';
-import { UserService } from '../services/user.service';
-import { ApiCountryDto } from '../dtos/api-country.dto';
+import { CountryService } from '../services/country.service';
 import { ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
-import { apiCountryDtoArrayExample } from '../examples/api-country-dto-array.example';
+import { ApiCountryDto } from '../dtos/api-country.dto';
 import { CountryInfoResponseDto } from '../dtos/country-info-response.dto';
+import { countryInfoResponseDtoExample } from '../examples/country-info-response.example1';
+import { apiCountryDtoArrayExample } from '../examples/api-country-dto-array.example';
 
 @Controller('country')
 @ApiTags('Country')
 export class CountryController {
   private readonly logger = new Logger(CountryController.name);
 
-  public constructor(private readonly userService: UserService) {}
+  public constructor(private readonly countryService: CountryService) {}
 
   @Get()
   @ApiOkResponse({
@@ -18,7 +19,7 @@ export class CountryController {
     example: apiCountryDtoArrayExample,
   })
   getAllAvailableCountries(): Promise<ApiCountryDto[]> {
-    return this.userService.getAllAvailableCountries();
+    return this.countryService.getAllAvailableCountries();
   }
 
   @Get(':countryCode')
@@ -31,9 +32,9 @@ export class CountryController {
   })
   @ApiOkResponse({
     type: CountryInfoResponseDto,
-    example: apiCountryDtoArrayExample,
+    example: countryInfoResponseDtoExample,
   })
   getCountryInfo(@Param('countryCode') countryCode: string): Promise<any> {
-    return this.userService.getCountryInfo(countryCode);
+    return this.countryService.getCountryInfo(countryCode);
   }
 }

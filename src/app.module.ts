@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RegisterModule } from './register/register.module';
+import { CountryModule } from './country/country.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { RegisterModule } from './register/register.module';
     }),
     UserModule,
     RegisterModule,
+    CountryModule,
   ],
   controllers: [],
   providers: [],
