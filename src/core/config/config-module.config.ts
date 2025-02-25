@@ -1,9 +1,9 @@
 import { ConfigModuleOptions } from '@nestjs/config';
-import envSchemaValidation from '../validation/env-schema.validation';
+import getEnvValidationSchema from '../validation/env.validation';
 
 export default (): ConfigModuleOptions => ({
   envFilePath: '.env.development.local',
-  validationSchema: envSchemaValidation(),
+  validationSchema: getEnvValidationSchema(),
   isGlobal: true,
   expandVariables: true,
 });

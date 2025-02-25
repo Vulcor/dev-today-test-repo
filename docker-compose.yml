@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: dev-today-test-mongo
+    image: mongo:8.0
+    hostname: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=vulcore
+      - MONGO_INITDB_ROOT_PASSWORD=12341234
+    restart: always
+    ports:
+      - '27018:27017'
+    volumes:
+      - mongo-data:/var/lib/mongo/data
+    networks:
+      dev-today-test:
+        aliases:
+          - mongo
+
+networks:
+  dev-today-test:
+
+volumes:
+  mongo-data:
+    driver: local
