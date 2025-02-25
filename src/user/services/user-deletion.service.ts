@@ -1,6 +1,6 @@
 // @nest
 import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
-import * as mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 import { UserRepository } from 'src/core/dal/mongoDB/repositories/user.repository';
 
@@ -10,7 +10,7 @@ export class UserDeletionService {
 
   public constructor(private readonly userRepository: UserRepository) {}
 
-  public async deleteUser(id: string | mongoose.ObjectId): Promise<void> {
+  public async deleteUser(id: string | Types.ObjectId): Promise<void> {
     try {
       await this.userRepository.delete(id);
     } catch (err) {

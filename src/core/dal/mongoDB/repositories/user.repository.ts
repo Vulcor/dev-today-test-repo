@@ -10,7 +10,7 @@ export class UserRepository extends BaseRepository<UserDocument> {
     super(userModel);
   }
 
-  public async create(createDocumentData: User): Promise<UserDocument> {
+  public async create(createDocumentData: Omit<User, '_id' | 'events'>): Promise<UserDocument> {
     const user = await this.userModel.create(createDocumentData);
     return user;
   }

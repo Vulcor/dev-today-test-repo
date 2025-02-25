@@ -1,5 +1,4 @@
 import { HttpException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
-import mongoose from 'mongoose';
 import { UserRepository } from 'src/core/dal/mongoDB/repositories/user.repository';
 import { UserDocument } from 'src/core/dal/mongoDB/schemas/user.schema';
 import { UserExistsException } from 'src/core/exceptions/user-exists.exception';
@@ -31,7 +30,7 @@ export class RegisterService {
 
       return newUser;
     } catch (err) {
-      if (newUser && newUser._id) await this.userDeletionService.deleteUser(newUser._id as mongoose.ObjectId);
+      if (newUser && newUser._id) await this.userDeletionService.deleteUser(newUser._id);
       if (err instanceof HttpException) throw err;
       throw new InternalServerErrorException(err.message | err);
     }

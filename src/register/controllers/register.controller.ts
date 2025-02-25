@@ -5,7 +5,7 @@ import { RegisterDto } from '../dtos/register.dto';
 import { User } from 'src/core/dal/mongoDB/schemas/user.schema';
 
 @Controller('register')
-@ApiTags('register')
+@ApiTags('Register')
 export class RegisterController {
   constructor(private readonly registerService: RegisterService) {}
 

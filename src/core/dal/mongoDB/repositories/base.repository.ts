@@ -1,10 +1,11 @@
-import mongoose, {
+import {
   Document,
   FilterQuery,
   Model,
   MongooseBaseQueryOptions,
   ProjectionType,
   QueryOptions,
+  Types,
   UpdateQuery,
   UpdateWithAggregationPipeline,
 } from 'mongoose';
@@ -21,7 +22,7 @@ export abstract class BaseRepository<T extends Document> {
     return doc.save();
   }
 
-  public async delete(id: string | mongoose.ObjectId): Promise<T | null> {
+  public async delete(id: string | Types.ObjectId): Promise<T | null> {
     return this.model.findOneAndDelete({ _id: id });
   }
 
