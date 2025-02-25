@@ -4,6 +4,7 @@ import mongooseConfig from './core/config/mongoose.config';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { RegisterModule } from './register/register.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       useFactory: mongooseConfig,
     }),
     UserModule,
+    RegisterModule,
   ],
   controllers: [],
   providers: [],

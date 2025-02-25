@@ -1,4 +1,4 @@
-import {
+import mongoose, {
   Document,
   FilterQuery,
   Model,
@@ -21,7 +21,7 @@ export abstract class BaseRepository<T extends Document> {
     return doc.save();
   }
 
-  public async delete(id: string): Promise<T | null> {
+  public async delete(id: string | mongoose.ObjectId): Promise<T | null> {
     return this.model.findOneAndDelete({ _id: id });
   }
 

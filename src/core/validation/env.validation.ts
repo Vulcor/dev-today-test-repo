@@ -9,6 +9,8 @@ export default (): Joi.ObjectSchema => {
     MONGO_USERNAME: Joi.string().required(),
     MONGO_PASSWORD: Joi.string().required(),
     MONGO_PORT: Joi.number().required(),
+
+    PASSWOD_HASH_ROUNDS: Joi.number().default(10),
   };
 
   const validationSchema = Joi.object(config);
