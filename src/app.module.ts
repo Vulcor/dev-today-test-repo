@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import getConfigModuleConfig from './core/config/config-module.config';
-import { MongooseModule } from '@nestjs/mongoose';
 import mongooseConfig from './core/config/mongoose.config';
+import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import mongooseConfig from './core/config/mongoose.config';
     MongooseModule.forRootAsync({
       useFactory: mongooseConfig,
     }),
+    UserModule,
   ],
   controllers: [],
   providers: [],
