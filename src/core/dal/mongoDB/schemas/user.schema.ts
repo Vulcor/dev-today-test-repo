@@ -3,7 +3,6 @@ import { Document, Types } from 'mongoose';
 
 @Schema({ timestamps: { createdAt: true } })
 export class User {
-  @Prop({ type: Types.ObjectId })
   _id: Types.ObjectId;
 
   @Prop({ type: String, unique: true, index: true })
@@ -13,7 +12,7 @@ export class User {
   password?: string;
 
   @Prop({ type: [Types.ObjectId], ref: 'Event' })
-  events: [];
+  events?: Event[];
 }
 
 export type UserDocument = Document & User;

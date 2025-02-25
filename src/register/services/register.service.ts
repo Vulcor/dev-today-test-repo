@@ -1,4 +1,4 @@
-import { HttpException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { UserRepository } from 'src/core/dal/mongoDB/repositories/user.repository';
 import { UserDocument } from 'src/core/dal/mongoDB/schemas/user.schema';
 import { UserExistsException } from 'src/core/exceptions/user-exists.exception';
@@ -31,8 +31,10 @@ export class RegisterService {
       return newUser;
     } catch (err) {
       if (newUser && newUser._id) await this.userDeletionService.deleteUser(newUser._id);
-      if (err instanceof HttpException) throw err;
-      throw new InternalServerErrorException(err.message | err);
+      // if only had time to implemented exceptions handler layer... this should do
+      this.logger.error(err);
+      throw err;
+      // throw new InternalServerErrorException(err.message | err);
     }
   }
 

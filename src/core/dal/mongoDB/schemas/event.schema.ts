@@ -3,13 +3,12 @@ import { Document, Types } from 'mongoose';
 
 @Schema({ timestamps: { createdAt: true } })
 export class Event {
-  @Prop({ _id: false })
   _id: Types.ObjectId;
 
   @Prop({ type: String })
   name: string;
 
-  @Prop()
+  @Prop({ type: Date })
   date: Date;
 
   @Prop({ type: Types.ObjectId, ref: 'User' })

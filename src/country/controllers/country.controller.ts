@@ -6,8 +6,8 @@ import { CountryInfoResponseDto } from '../dtos/country-info-response.dto';
 import { countryInfoResponseDtoExample } from '../examples/country-info-response.example1';
 import { apiCountryDtoArrayExample } from '../examples/api-country-dto-array.example';
 
-@Controller('country')
-@ApiTags('Country')
+@Controller('countries')
+@ApiTags('Countries')
 export class CountryController {
   private readonly logger = new Logger(CountryController.name);
 

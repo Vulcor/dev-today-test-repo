@@ -14,4 +14,16 @@ export class EventRepository extends BaseRepository<EventDocument> {
     const user = await this.eventModel.create(createDocumentData);
     return user;
   }
+
+  public async createMany(createDocumentData: Omit<Event, '_id'>[]): Promise<any> {
+    const writeOps = createDocumentData.map((event) => {
+      return {
+        insertOne: {
+          document: event,
+        },
+      };
+    });
+
+    return await this.eventModel.bulkWrite(writeOps);
+  }
 }
